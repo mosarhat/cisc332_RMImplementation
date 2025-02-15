@@ -42,19 +42,28 @@ The algorithm for class is as follows:
     - Method 1:
         - Action: Create a relation (table) for the superclass, and a table for each subclass.
         - Steps:
-            - Create an entity for each super and subclass with the primary key being the primary key of the superclass. The primary key l
+            - Create an entity for each super and subclass with the primary key being the primary key of the superclass. The primary key of the sub-classes will be a foreign key referencing the super class entity.
     - Method 2:
         - Action: Create a table for each subclass, including all attributes of the superclass.
-        - Steps:
+        - Steps: Create an entity for each sub-class (no entity for the super-class) including all attributes (and primary) key of the superclass as well as all local attributes.
 4. Process the *many to many (N:M)* relationships.
     - Action: Convert each N:M relationship into a relation (table).
     - Steps:
+        - Make each N:M relationship a relation (table).
+        - Add the primary key from each of the participating entities as foreign keys.
+        - The primary key will be the combination of the primary keys from the participating entities.
+        - Any attributes of the relationship as an attribute in the relation.
 5. Process the *one to many (1:N)* relationships.
     - Action: Add the primary key of the "1" side entity as a foreign key in the relation (table) on the "N" side.
     - Steps:
+        - any attributes associated with the relationship are put into the same relation (with the foreign key).
 6. Process the *1:1* relationships.
-    - Action: Add the primary key of one entity as a foreign key in the other entity's relation (table).
+    - Action: Add the primary key of one entity as a foreign key in the other entity's relation (table). 
     - Steps:
+        - Try to reduce the need for "NULL" entries.
 7. Process the *multi-valued* attributes.
-    - Action: Create a new relation (table) for each multi-valued attribute.
+    - Action: Create a new relation (table) for each multi-valued relationship.
     - Steps:
+        - Add the multi-valued attribute and the primary key of the entity to which this attribute belongs.
+        - The primary key will be a foreign key in this new relation.
+        - The primary key will be a combination of the multi-valued attribute and the foreign key attribute.
