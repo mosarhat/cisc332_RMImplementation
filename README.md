@@ -10,6 +10,7 @@ The following is my own ER diagram:
 
 <div align="center">    
     <img src="er_diagram/erdiagram.jpg"></img>
+    <figcaption></figcaption>
 </div> 
 
 Within the ```relational_database``` folder, there should be a ```conferenceDB.ddl```. 
